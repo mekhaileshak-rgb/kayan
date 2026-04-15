@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kayan</title>
+    <link href="bootstrap.css" rel="stylesheet">
+    <link rel="icon" href="./phooto/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+  
+</head>
+
+
+    <style>
+        .social-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(145deg, #222, #000);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+/* حركة عامة */
+.social-icon:hover {
+    transform: translateY(-8px) scale(1.12);
+}
+
+/* Glow */
+.social-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transition: 0.35s;
+}
+
+/* X */
+/* التنسيق العام للأيقونات لجعلها شفافة */
+.social-icon {
+    background: transparent; /* جعل الخلفية شفافة لكل الأيقونات */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* X (Twitter) */
+/* 1. تعريف حركة النبض */
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1); /* تكبير بسيط */
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 2. إضافة التأثير للأيقونات عند الـ Hover */
+.social-icon:hover {
+    animation: pulse-animation 0.6s infinite ease-in-out;
+    z-index: 10; /* عشان تظهر فوق الباقي وهي بتكبر */
+}
+
+/* 3. تعديل الـ Shadow ليكون متناسق مع النبض (اختياري لزيادة الجمالية) */
+.social-icon::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Snapchat الاستثناء (الخلفية ملونة والنبض شغال عليها) */
+.social-icon.snapchat:hover {
+    background: #fffc00;
+    box-shadow: 0 0 30px #fffc00; /* توهج خارجي مع النبض */
+}
+
+/* تليجرام - نبض بلونه الخاص */
+.social-icon.telegram:hover {
+    color: #0088cc;
+    text-shadow: 0 0 15px rgba(0, 136, 204, 0.7);
+}
+
+/* TikTok - نبض بتوهج ألوانه */
+.social-icon.tiktok:hover {
+    text-shadow: 2px 2px 10px #ff0050, -2px -2px 10px #00f2ea;
+}
+
+/* X - نبض أبيض صافي */
+.social-icon.x:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+/* التنسيق الأساسي للأيقونة (بدون خلفية) */
+.social-icon {
+    width: 60px; /* يمكنك تعديل الحجم حسب تصميمك */
+    height: 60px;
+    background: transparent; /* الخلفية شفافة في الحالة العادية */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    position: relative;
+    transition: all 0.4s ease; /* تنعيم ظهور اللون */
+    text-decoration: none;
+}
+
+/* حركة النبض */
+@keyframes pulse-animation {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* تأثير الـ Hover العام: يظهر اللون وتعمل الحركة */
+.social-icon:hover {
+    animation: pulse-animation 0.8s infinite ease-in-out;
+    color: #fff !important; /* تغيير لون الشعار للأبيض عند ظهور الخلفية */
+}
+
+/* 1. X (Twitter) */
+.social-icon.x { color: #000; } /* لون الشعار الافتراضي */
+.social-icon.x:hover {
+    background: #000; /* تظهر الخلفية السوداء عند الهوفر */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* 2. Snapchat */
+/* سناب شات يظهر بخلفية صفراء فقط عند الهوفر حسب طلبك الأخير */
+.social-icon.snapchat { color: #fffc00; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+.social-icon.snapchat:hover {
+    background: #fffc00;
+    color: #000 !important;
+    box-shadow: 0 0 20px rgba(255, 252, 0, 0.6);
+}
+
+/* 3. TikTok */
+.social-icon.tiktok { color: #000; }
+.social-icon.tiktok:hover {
+    background: #000;
+    box-shadow: 5px 0 15px #ff0050, -5px 0 15px #00f2ea;
+}
+
+/* 4. Telegram */
+.social-icon.telegram { color: #0088cc; }
+.social-icon.telegram:hover {
+    background: #0088cc;
+    box-shadow: 0 0 20px rgba(0, 136, 204, 0.6);
+}
+.list-unstyled li {
+    display: flex;             /* عشان الأيقونة والكلام يكونوا على خط واحد */
+    align-items: flex-start;   /* لضمان محاذاة الأيقونة لو الكلام نزل سطرين */
+    line-height: 1.6;          /* ده اللي بيمنع تداخل الحروف فوق بعضها */
+    margin-bottom: 15px;       /* المسافة بين كل نقطة والتانية */
+}
+
+/* التنسيق الجديد للقائمة لجعلها احترافية */
+.list-unstyled {
+    display: inline-block; /* عشان نقدر نوسط القائمة كلها */
+    text-align: left;      /* الكلام يبدأ من اليسار داخل القائمة */
+}
+
+/* لو اللغة عربي، الكلام يبدأ من اليمين */
+[dir="rtl"] .list-unstyled {
+    text-align: right;
+}
+
+.list-unstyled li {
+    display: flex;
+    align-items: center;    /* لوسط الأيقونة مع الكلام عمودياً */
+    gap: 15px;             /* مسافة ثابتة بين الأيقونة والنص */
+    margin-bottom: 20px;    /* مسافة بين كل سطر والتاني */
+    font-size: 1.1rem;      /* حجم خط مريح للعين */
+    font-weight: 600;       /* جعل الخط سميك قليلاً مثل الصورة */
+    text-transform: uppercase; /* لجعل الكلام الإنجليزي حروف كبيرة Capital */
+}
+
+.list-unstyled li i {
+    font-size: 1.3rem;      /* تكبير الأيقونة قليلاً */
+    flex-shrink: 0;         /* منع الأيقونة من الصغر لو الكلام كتر */
+}
+
+.lang-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.btn-lang {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); /* تأثير الزجاج الضبابي */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-lang:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-lang i {
+    font-size: 1.1rem;
+}
+
+.small-icon {
+    font-size: 0.7rem !important;
+}
+
+
+/* لما الصفحة تكون عربي، الزرار ينقل نفسه للشمال تلقائياً */
+[dir="rtl"] .lang-switcher {
+    right: auto;
+    left: 20px;
+}
+
+
+/* تعديلات الموبايل */
+@media (max-width: 768px) {
+    .lang-switcher {
+        top: 10px;
+        right: 10px;
+    }
+    
+    [dir="rtl"] .lang-switcher {
+        left: 10px;
+        right: auto;
+    }
+
+    .btn-lang {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* تصغير الأيقونة في الموبايل */
+    .btn-lang i {
+        font-size: 0.9rem;
+    }
+}
+
+/* تظبيط القائمة المنسدلة عشان متخرجش بره الشاشة في الموبايل */
+.dropdown-menu {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    margin-top: 10px !important;
+}
+
+/* لو الموقع عربي، خلي القائمة تفتح بمحاذاة الزرار صح */
+[dir="rtl"] .dropdown-menu {
+    text-align: right;
+}
+/* تنسيق العنصر المختار داخل القائمة */
+.dropdown-item.active {
+    background-color: #03a5c6 !important; /* لون الهوية الخاص بموقعك */
+    color: white !important;
+    font-weight: bold;
+    position: relative;
+}
+/* تنسيق اللغة المختارة داخل القائمة */
+.dropdown-item.active {
+    background-color: #03a5c6 !important; /* نفس لون موقعك */
+    color: white !important;
+    font-weight: bold;
+}
+
+/* إضافة علامة ✓ صغيرة */
+.dropdown-item.active::after {
+    content: " ✓";
+    float: right;
+}
+
+[dir="rtl"] .dropdown-item.active::after {
+    float: left;
+}
+/* إضافة علامة صح صغيرة بجانب اللغة المختارة (اختياري) */
+.dropdown-item.active::after {
+    content: ' ✓';
+    font-size: 0.8rem;
+    margin-left: 10px;
+}
+
+/* في حالة اللغة العربية، اجعل علامة الصح على اليمين */
+[dir="rtl"] .dropdown-item.active::after {
+    margin-left: 0;
+    margin-right: 10px;
+}
+/* التنسيق الأساسي للزرار مع إضافة ظل وبرواز خفيف */
+.btn-lang {
+    background: rgba(0, 0, 0, 0.05); /* خلفية داكنة خفيفة جداً */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* برواز يحدد الزرار */
+    color: #333; /* لون النص الافتراضي داكن عشان يبان على الأبيض */
+    padding: 8px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* ظل عشان يظهر على الخلفية البيضاء */
+    transition: all 0.3s ease;
+}
+
+/* حالة خاصة: لما يكون الزرار فوق الـ Hero Section (الخلفية الغامقة) */
+/* الكود ده بيخلي الزرار يقلب أبيض بس لما يكون في البداية */
+.hero-section ~ .lang-switcher .btn-lang, 
+body:not(.scrolled) .btn-lang {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
+
+/* تأثير عند الوقوف بالماوس */
+.btn-lang:hover {
+    background: #03a5c6;
+    color: white !important;
+    border-color: #03a5c6;
+    transform: translateY(-2px);
+}
+
+/* تعديل أيقونة الكرة الأرضية والسهم لضمان ظهورهم */
+.btn-lang i {
+    color: inherit; /* بيأخد نفس لون النص */
+}
+.apps-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.app-item-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.app-item-link:hover {
+    background: #f0f2f5;
+}
+
+/* تمييز اللغة المختارة حالياً */
+.lang-option.active .app-icon-box {
+    background: #03a5c6 !important;
+    color: white !important;
+    border-color: #03a5c6 !important;
+}
+
+.app-icon-box {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+</style>
+<body> 
+<div class="lang-switcher">
+    <div class="dropdown">
+        <button class="btn-lang" type="button" id="mainMenu" data-bs-toggle="dropdown" aria-expanded="false" style="width: 45px; height: 45px; justify-content: center; padding: 0;">
+            <i class="fa-solid fa-table-cells"></i>
+        </button>
+        
+        <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg border-0" aria-labelledby="mainMenu" style="width: 280px; border-radius: 20px;">
+            <p class="small text-muted mb-2 px-2" data-i18n="appsTitle">Apps & Language</p>
+            <div class="apps-grid-layout">
+                <a href="kayan.html" class="app-item-link">
+                    <div class="app-icon-box" style="background: linear-gradient(135deg, #03a5c6, #1a3745);">K</div>
+                    <span>Kayan</span>
+                </a>
+
+                <a href="javascript:void(0)" onclick="switchLanguage('ar')" class="app-item-link lang-option" id="lang-ar">
+                    <div class="app-icon-box" style="background: #e9ecef; color: #333; border: 1px solid #ddd;">ع</div>
+                    <span>العربية</span>
+                </a>
+
+                <a href="javascript:void(0)" onclick="switchLanguage('en')" class="app-item-link lang-option" id="lang-en">
+                    <div class="app-icon-box" style="background: #e9ecef; color: #333; border: 1px solid #ddd;">EN</div>
+                    <span>English</span>
+                </a>
+
+                <a href="https://t.me/kayanvision2024" target="_blank" class="app-item-link">
+                    <div class="app-icon-box" style="background: #0088cc;"><i class="fa-brands fa-telegram"></i></div>
+                    <span>Telegram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <main>
+        <!-- Section 1: Hero -->
+                        <section class="hero-section text-white d-flex justify-content-center align-items-center" 
+                                    style="
+                                        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                                                    url('./phooto/WhatsApp Image 2026-02-11 at 3.16.53 PM.jpeg') no-repeat center center / cover; 
+                                        min-height: 100vh;
+                                        text-align: center;">
+                                    <div class="container">
+                                        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+                                            <h1 class="display-4 fw-bold mb-3" data-i18n="heroTitle"></h1>
+                                            <p class="lead mb-4" data-i18n="heroDesc"></p>
+                                            <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+                                                <a href="#contact" class="btn btn-primary btn-lg px-4" data-i18n="bookConsultation"></a>
+                                                <a href="#services" class="btn btn-outline-light btn-lg px-4" data-i18n="learnMore"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                    </section>
+
+
+
+
+        <!-- Section 2: Services -->
+        <section id="services" class="py-5" style="background: linear-gradient( #1a3745 , #03a5c6);">
+                <div class="container text-center">
+                    <h2 class="fw-bold mb-2" data-i18n="ourServices"></h2>
+                    <p class="text-muted mb-5" data-i18n="servicesDesc"></p>
+                    
+                    <div class="row justify-content-center g-4">
+                        <!-- Card A -->
+                        <div class="col-md-3">
+                            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                                <div class="mb-3"><i class="fas fa-chart-line fa-2x text-primary"></i></div>
+                                <h5 data-i18n="carda1"></h5>
+                                <p class="small text-muted" data-i18n="carda2"></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card B -->
+                        <div class="col-md-3">
+                            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                                <div class="mb-3"><i class="fas fa-shield-alt fa-2x text-primary"></i></div>
+                                <h5 data-i18n="cardb1"></h5>
+                                <p class="small text-muted" data-i18n="cardb2"></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card C -->
+                        <div class="col-md-3">
+                            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                                <div class="mb-3"><i class="fas fa-search-dollar fa-2x text-primary"></i></div>
+                                <h5 data-i18n="cardc1"></h5>
+                                <p class="small text-muted" data-i18n="cardc2"></p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card D -->
+                        <div class="col-md-3">
+                            <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                                <div class="mb-3"><i class="fas fa-user-tie fa-2x text-primary"></i></div>
+                                <h5 data-i18n="cardd1"></h5>
+                                <p class="small text-muted" data-i18n="cardd2"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+        <!-- Section 3: Why Choose Us -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                   <div class="col-lg-6">
+                        <h2 class="fw-bold mb-4" data-i18n="section3a"></h2>
+                        <p class="text-muted mb-4" data-i18n="section3b"></p>
+                        
+                        <div class="features-list">
+                            <ul class="list-unstyled mt-4">
+                                <li><i class="fas fa-check-circle text-success"></i> <span data-i18n="section3c"></span></li>
+                                <li><i class="fas fa-check-circle text-success"></i> <span data-i18n="section3d"></span></li>
+                                <li><i class="fas fa-check-circle text-success"></i> <span data-i18n="section3e"></span></li>
+                              
+                             
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800" class="img-fluid rounded-3 shadow" alt="Consultation">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Pricing Packages -->
+        <section class="py-5 bg-white">
+            <div class="container">
+                <h2 class="text-center fw-bold mb-5" data-i18n="Section4a"></h2>
+                <div class="row g-4 justify-content-center">
+                        <!-- Card A  -->
+                    <div class="col-md-4">
+                        <div class="card p-4 border-0 shadow-sm h-100">
+                           <h3 class="text-center" data-i18n="section4a1"></h3>
+                            <h2 class="fw-bold my-3 text-primary text-center ">$800</span></h2>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="Section4a2"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="Section4a3"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="Section4a4"></span></li>
+                            </ul>
+                            <button class="btn btn-outline-dark w-100"> <span data-i18n="section4a5"></span></button>
+                        </div>
+                    </div>
+                    <!-- Card B  -->
+                    <div class="col-md-4 ">
+                        <div class="card p-4 border-primary shadow text-dark position-relative h-100">
+                            <span class="badge bg-primary position-absolute top-0 start-50 translate-middle  "> <span data-i18n="Section4b"></span></span>
+                           <h3 class="text-center" data-i18n= "section4b1"></h3> 
+                            <h2 class="fw-bold my-3 text-primary text-center" >$1500</h2>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4b2"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4b3"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4b4"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4b5"></span></li>
+                            </ul>
+                            <button class="btn btn-dark w-100" data-i18n="section4b6"></button>
+                    </div>
+                    </div>
+                    <!-- Card C -->
+                        <div class="col-md-4">
+                        <div class="card p-4 border-0 shadow-sm h-100">
+                            <h3  class="text-center" data-i18n="section4c"></h3>
+                            <h2 class="fw-bold my-3 text-primary text-center">$3000</h2>
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4c1"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4c2"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4c3"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4c4"></span></li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i> <span data-i18n="section4c5"></span></li>
+                            </ul>
+                            <button class="btn btn-outline-dark w-100"> <span data-i18n="section4c6"></span></button>
+                        </div>
+                    </div> 
+                    
+                </div>
+            </div>
+
+            
+        </section>
+
+
+        <!-- Section 5: Contact -->
+        <section id="contact" class="py-5 bg-light">
+            <div class="container">
+                <div class="row g-4">  
+                    <div class="col-lg-8">
+                        <div class="bg-white p-4 p-lg-5 rounded shadow-sm">
+                            <h4 class="text-center mb-4" data-i18n="section5a"></h4>
+                            <div class="text-center py-5">
+                                    <h4 class="fw-bold mb-4" data-i18n="section5b"></h4>
+
+                                    <div class="d-flex justify-content-center gap-5 flex-wrap">
+                                            <div class="social-wrap fade-up" style="animation-delay: .1s;">
+                                                <a href="https://x.com/kayan_officiall?s=21&t=aDInH4uBFRebHP8m7XaTCw" class="social-icon x">
+                                                    <i class="fa-brands fa-x-twitter"></i> </a>
+                                                <span style="display: block; padding-top: 25%;">X</span>
+                                            </div>
+
+                                            <div class="social-wrap fade-up" style="animation-delay: .25s;">
+                                                <a href="https://snapchat.com/t/0V8AWUQ3" class="social-icon snapchat">
+                                                    <i class="fa-brands fa-snapchat"></i>
+                                                </a>
+                                                <span style="display: block; padding-top: 25%;">Snapchat</span>
+                                            </div>
+
+                                            <div class=" gap-2 social-wrap fade-up" style="animation-delay: 1ms;">
+                                                <a href=" https://www.tiktok.com/@kayan_officiall?_r=1&_t=ZS-94L0JwfkZaZ" class="social-icon tiktok">
+                                                    <i class="mg-2 fa-brands fa-tiktok "></i>
+                                                </a>
+                                                <span style="display: block; padding-top: 25%;">TikTok</span>
+                                            </div>
+
+                                            <div class="  gap-2 social-wrap fade-up" style="animation-delay: .5s;">
+                                                <a href="https://t.me/kayanvision2024"  class="social-icon telegram">
+                                                    <i class="fa-brands fa-telegram"></i>
+                                                </a>
+                                                <span style="display: block; padding-top: 25%;">Telegram</span>
+                                            </div>
+                                    </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                            <div class="col-lg-4">
+                                <div class="card p-3 mb-3 border-0 shadow-sm">
+                                    <p class="m-0 fw-bold">Email</p>
+                                    <a href="mailto:kayanofficial12@gmail.com" class="m-0 text-muted">kayanofficial12@gmail.com</a>
+                                </div>
+                                <div class="card p-3 mb-3 border-0 shadow-sm">
+                                    <p class="m-0 fw-bold">Phone</p>
+                                    <a href="https://wa.me/message/FPGLBI4XOCOFJ1" class="m-0 text-muted">  502460238 +966</a>
+                                </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Trading Consultations</h5>
+                    <p class="small text-muted">Empowering traders with expert guidance.</p>
+                </div>
+                <div class="col-md-8 text-md-end">
+                    <p class="small text-muted">© 2026 Trading Consultations. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+const translations = {
+    en: {
+        heroTitle: "Master the Markets with Expert Trading Consultations",
+        heroDesc: "Get personalized guidance from experienced traders to develop winning strategies.",
+        bookConsultation: "Book a Consultation →",
+        learnMore: "Learn More",
+        ourServices: "Our Services",
+        servicesDesc: "Comprehensive trading consultation services designed to elevate your trading performance",
+       
+        carda1: "Financial Analysis",
+        carda2: "In-depth financial analysis to understand market trends and identify opportunities.Based on advanced tools in technical and fundamental analysis, supporting your decisions using the latest analytical methods related to indicators and artificial intelligence.",
+        cardb1: "Risk Management",
+        cardb2: "We help protect your capital and reduce potential losses during trading.Through clear strategies for position sizing and effective stop-loss management.",
+        cardc1: "Portfolio Management",
+        cardc2: "We professionally manage your investment portfolio to help you grow your capital with confidence.Well-planned strategies and carefully selected investment opportunities that align with your financial goals.",
+        cardd1: " Trading Recommendations",
+        cardd2: "Professional trading recommendations in both the Saudi and U.S. markets based on precise analysis.We identify entry and exit points, along with targets and stop-loss levels, to provide clearer trading opportunities.",
+
+
+        section3a: "Why Choose Kayan for Your Trading Journey?",
+        section3b: "We're not just consultants—we're active traders who understand the challenges you face.",
+        section3c: "Over 15 years of combined experience",
+        section3d: "Proven track record with 1000+ clients",
+        section3e: "Specialized in stocks, forex, and crypto",
+          
+        // Card A
+        Section4a: "Choose Your Consultation Packag",
+        section4a1: "Basic Package",
+        Section4a2: "2 personalized trade recommendations during the session (based on market conditions) with live follow-up",
+        Section4a3: "Profit potential up to 50%",
+        Section4a4: "24/7 support",
+        section4a5 :"Get Started",
+        // Card B
+        Section4b: "Most Popular",
+        section4b1: "VIP",
+        section4b2: "3 personalized trade recommendations during the session",
+        section4b3: "Profit potential up to 50%",
+        section4b4: "Live follow-up during the session",
+        section4b5: "AI-powered trade analysis",
+        section4b6: "Get Started",
+        // Card C
+        section4c: "Business Pro",
+        section4c1: "4 personalized trade recommendations during the session",
+        section4c2: "Profit potential up to +200% ",
+        section4c3: "Live follow-up during the session",
+        section4c4: "Free AI-powered trade analysis",
+        section4c5: "Free portfolio management",
+        section4c6: "Get Started",
+
+
+        section5a: "Contact Us",
+
+
+    
+    },
+    ar: {
+        heroTitle: "أتقن الأسواق مع استشارات تداول احترافية",
+        heroDesc: "احصل على إرشاد مخصص من متداولين محترفين لبناء استراتيجيات ناجحة.",
+        bookConsultation: "احجز استشارة ←",
+        learnMore: "اعرف المزيد",
+        ourServices: "خدماتنا",
+        servicesDesc: "خدمات استشارية شاملة لرفع مستوى أدائك في التداول",
+       
+        carda1: "التحليل المالي",
+        carda2: "تعتمد على أدوات متقدمة في التحليل الفني والأساسي لدعم قراراتك باستخدام احدث اساليب التحليلات مالية عميقة لفهم اتجاهات السوق واكتشاف الفرص التحليل المتعلقة بالموشرات و الذكاء الاصطناعي.", 
+        cardb1: "إدارة المخاطرة",
+        cardb2:  "نحن نساعدك في حماية رأس المال وتقليل الخسائر المحتملة أثناء التداول. من خلال استراتيجيات واضحة لحجم الموقف وإدارة الخسائر الفعالة.",
+        cardc1: "إدارة المحافظ الاستثمارية",
+        cardc2: "ندير محفظتك الاستثمارية باحترافية لنساعدك على تنمية رأس مالك بثقةاستراتيجيات مدروسة واختيار فرص استثمارية تناسب أهدافك.",
+        cardd1: "توصيات التداول",
+        cardd2: "توصيات تداول احترافية في أسواق السعودية والولايات المتحدة بناءً على تحليل دقيق. نحدد نقاط الدخول والخروج مع أهداف ومستويات إيقاف الخسارة لتقديم فرص تداول أوضح.",
+
+        section3a: "لماذا تختار كيان ؟",
+        section3b:" منصة رائدة في إدارة شؤون المتداول السعودي، نمنحك الأدوات والخبرة لتتداول بثقة وتستثمر بوعي.",
+        section3c: "أكثر من 15 عامًا من الخبرة في السوق السعودي والأسواق العالمية.",
+        section3d: "فريق من نخبة المحللين الماليين على مستوى الشرق الأوسط.",
+        section3e: "اعتماد أحدث تقنيات التداول المدعومة بالذكاء الاصطناعي.",
+        section3f:"دعم احترافي متواصل على مدار 24 ساعة طوال أيام الأسبوع.",
+        
+        // Card A
+        Section4a: "اختر باقة الاستشارة الخاصة بك",
+        section4a1: "الباقة الاساسية",
+        Section4a2: "توصيتين خلال الجلسة ( علي حسب وضع السوق) متابعة أثناء الجلسة ",
+        Section4a3: "نسبة الارباح تصل إلى ٪50",
+        Section4a4: " دعم طول اليوم ",
+        section4a5: " اشترك الآن ",
+        // Card B
+        Section4b: "الأكثر شعبية",
+        section4b1: "VIP",
+        section4b2: "ثلاثة توصيات خلال الجلسة",
+        section4b3: "نسبة الأرباح %50",
+        section4b4: "متابعة اثناء الجلسة",
+        section4b5: "خدمة الذكاء الاصطناعي",
+        section4b6:" اشترك الآن" ,
+        // Card C
+        section4c: "رجل الاعمال ",
+        section4c1: " اربع توصيات خلال الجلسة ",
+        section4c2: "نسبة الارباح ٪+200",
+        section4c3: "متابعة اثناء الجلسة ",
+        section4c4: " خدمة الذكاء الاصطناعي مجاناً" ,
+        section4c5: "إدارة المحافظ مجاناً " ,
+        section4c6: " اشترك الآن" ,
+
+         section5a: "تواصل معنا",
+         
+
+     
+
+
+    }
+};
+
+function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+        }
+    });
+
+    // تحديث شكل الأيقونة النشطة جوه الـ Apps Grid
+    document.querySelectorAll('.lang-option').forEach(item => item.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+
+    localStorage.setItem("preferredLanguage", lang);
+}
+
+// تشغيل اللغة المحفوظة عند فتح الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    const savedLang = localStorage.getItem("preferredLanguage") || "en";
+    switchLanguage(savedLang);
+});
+window.addEventListener('scroll', function() {
+    const langBtn = document.querySelector('.btn-lang');
+    if (window.scrollY > 50) {
+        // عند النزول (الخلفيات البيضاء)
+        langBtn.style.background = "rgba(255, 255, 255, 0.8)";
+        langBtn.style.color = "#222";
+        langBtn.style.borderColor = "#ddd";
+    } else {
+        // عند الصعود (خلفية الـ Hero)
+        langBtn.style.background = "rgba(255, 255, 255, 0.2)";
+        langBtn.style.color = "#fff";
+        langBtn.style.borderColor = "rgba(255, 255, 255, 0.3)";
+    }
+});
+</script>
+
+</body>
+</html>
